@@ -1,14 +1,14 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
 import './Logo.css'
-import logo from './face_detect.png'
+import logo from './RecogniBox_Logo.png'
 
 
 const Logo = () => {
     return (
         <div className="pa3">
           <Tilt
-              className="parallax-effect br2 link pointer"
+              className="parallax-effect br2"
               perspective={500}
               tiltMaxAngleX={25}
               tiltMaxAngleY={25}
