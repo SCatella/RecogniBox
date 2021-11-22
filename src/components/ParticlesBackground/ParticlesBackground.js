@@ -52,7 +52,7 @@ const particlesOptions = {
 			enable: true,
 			outMode: "bounce",
 			random: false,
-			speed: 4,
+			speed: 1,
 			straight: false,
 		},
 		number: {
