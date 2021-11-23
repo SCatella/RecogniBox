@@ -117,7 +117,6 @@ class App extends Component {
 
     render() {
         const { isSignedIn, route, box, imageUrl } = this.state;
-        console.log(box);
 	  	return (
 		<div className="App">
             <Logo />
@@ -143,6 +142,7 @@ class App extends Component {
                         route={route}
                         loadUser={this.loadUser}
                         onRouteChange={this.onRouteChange}
+                        initialState={this.initialState}
                      />
                 )
             }
