@@ -32,7 +32,7 @@ class Form extends React.Component {
     onRegisterSubmit = () => {
         const { name, email, password } = this.state;;
         if (name && email && password) {
-            fetch('https://calm-anchorage-34036.herokuapp.com/register', {
+            fetch(process.env.SERVER_ADDRESS + 'register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -56,7 +56,7 @@ class Form extends React.Component {
     onSignInSubmit = () => {
         const { email, password } = this.state;
         if (email && password) {
-            fetch('https://calm-anchorage-34036.herokuapp.com/signin', {
+            fetch(process.env.SERVER_ADDRESS + 'signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
