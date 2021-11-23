@@ -32,7 +32,7 @@ class Form extends React.Component {
     onRegisterSubmit = () => {
         const { name, email, password } = this.state;;
         if (name && email && password) {
-            fetch(this.server + 'register', {
+            fetch(this.props.server + 'register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -56,7 +56,7 @@ class Form extends React.Component {
     onSignInSubmit = () => {
         const { email, password } = this.state;
         if (email && password) {
-            fetch(this.server + 'signin', {
+            fetch(this.props.server + 'signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
