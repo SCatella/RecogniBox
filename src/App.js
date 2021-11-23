@@ -69,7 +69,7 @@ class App extends Component {
 
 	onImageSubmit = () => {
 		this.setState({imageUrl: this.state.input});
-        fetch(process.env.SERVER_ADDRESS + 'submissionsurl', {
+        fetch(this.server + 'submissionsurl', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -79,7 +79,7 @@ class App extends Component {
         .then(response => response.json())
         .then(response => {
             if (response) {
-                fetch(process.env.SERVER_ADDRESS + 'submissions', {
+                fetch(this.server + 'submissions', {
                     method: 'PUT',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
@@ -115,6 +115,8 @@ class App extends Component {
         this.setState({ route: route });
     }
 
+    server = toString(process.env.SERVER_ADDRESS);
+
     render() {
         const { isSignedIn, route, box, imageUrl } = this.state;
 	  	return (
@@ -143,6 +145,7 @@ class App extends Component {
                         loadUser={this.loadUser}
                         onRouteChange={this.onRouteChange}
                         initialState={this.initialState}
+                        server={this.server}
                      />
                 )
             }
