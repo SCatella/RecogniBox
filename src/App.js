@@ -115,7 +115,8 @@ class App extends Component {
         this.setState({ route: route });
     }
 
-    server = toString(process.env.SERVER_ADDRESS);
+    server = 'https://recognibox-api.herokuapp.com/';
+
 
     render() {
         const { isSignedIn, route, box, imageUrl } = this.state;
