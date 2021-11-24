@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Helmet } from 'react-helmet';
 import Navigation from './components/Navigation/Navigation.js';
 import Form from './components/Form/Form.js';
 import Logo from './components/Logo/Logo.js';
@@ -9,12 +8,6 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition.js';
 import ParticlesBackground from './components/ParticlesBackground/ParticlesBackground.js';
 import './App.css';
 
-
-const MyComponent = () => (
-  <Helmet>
-    <title>RecogniBox</title>
-  </Helmet>
-)
 
 const initialState = {
     input: '',
@@ -127,7 +120,6 @@ class App extends Component {
 
     render() {
         const { isSignedIn, route, box, imageUrl } = this.state;
-        MyComponent()
 	  	return (
 		<div className="App">
             <Logo />
