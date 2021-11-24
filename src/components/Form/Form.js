@@ -2,10 +2,6 @@ import React from 'react';
 import bcrypt from 'bcryptjs';
 
 
-var hash = (value) => {
-    bcrypt.hashSync(value, 0);
-}
-
 class Form extends React.Component {
     constructor(props) {
         super();
@@ -38,15 +34,15 @@ class Form extends React.Component {
     onRegisterSubmit = () => {
         const { name, email, password } = this.state;;
         if (name && email && password) {
-            const hashPassword = hash(password);
-            console.log(hashPassword);
+            bcrypt.hashSync(password, 0);
+            console.log(password);
             fetch(this.props.server + 'register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     name: name,
                     email: email,
-                    password: hashPassword
+                    password: password
                 })
             })
             .then(response => response.json())
@@ -64,14 +60,14 @@ class Form extends React.Component {
     onSignInSubmit = () => {
         const { email, password } = this.state;
         if (email && password) {
-            const hashPassword = hash(password);
-            console.log(hashPassword);
+            bcrypt.hashSync(password);
+            console.log(password);
             fetch(this.props.server + 'signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     email: email,
-                    password: hashPassword
+                    password: password
                 })
             })
             .then(response => response.json())
