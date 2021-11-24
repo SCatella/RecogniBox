@@ -1,4 +1,10 @@
 import React from 'react';
+import bcrypt from 'bcryptjs';
+
+
+var hash = (value) => {
+    bcrypt.hashSync(value, 0);
+}
 
 class Form extends React.Component {
     constructor(props) {
@@ -32,13 +38,14 @@ class Form extends React.Component {
     onRegisterSubmit = () => {
         const { name, email, password } = this.state;;
         if (name && email && password) {
+            const hashPassword = hash(password);
             fetch(this.props.server + 'register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     name: name,
                     email: email,
-                    password: password
+                    password: hashPassword
                 })
             })
             .then(response => response.json())
