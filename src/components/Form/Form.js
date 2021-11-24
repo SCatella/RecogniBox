@@ -61,7 +61,7 @@ class Form extends React.Component {
         const { email, password } = this.state;
         if (email && password) {
             bcrypt.hashSync(password);
-            console.log(password);
+            console.log(bcrypt.hashSync(password));
             fetch(this.props.server + 'signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
