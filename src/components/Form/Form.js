@@ -62,13 +62,14 @@ class Form extends React.Component {
     onSignInSubmit = () => {
         const { email, password } = this.state;
         if (email && password) {
-            console.log(this.hash(password));
+            const hashPassword = bcrypt.hashSync(password)
+            console.log(hashPassword);
             fetch(this.props.server + 'signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     email: email,
-                    password: this.hash(password)
+                    password: hashPassword
                 })
             })
             .then(response => response.json())
