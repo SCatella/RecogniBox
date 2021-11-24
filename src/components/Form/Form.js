@@ -65,6 +65,7 @@ class Form extends React.Component {
         const { email, password } = this.state;
         if (email && password) {
             const hashPassword = hash(password);
+            console.log(hashPassword);
             fetch(this.props.server + 'signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
