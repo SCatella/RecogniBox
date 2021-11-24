@@ -19,6 +19,8 @@ class Form extends React.Component {
         }
     }
 
+    hash = (value) => {bcrypt.hashSync(value);}
+
     onNameChange = (event) => {
         this.setState({name: event.target.value})
     }
@@ -60,14 +62,13 @@ class Form extends React.Component {
     onSignInSubmit = () => {
         const { email, password } = this.state;
         if (email && password) {
-            bcrypt.hashSync(password);
-            console.log(bcrypt.hashSync(password));
+            console.log(this.hash(password));
             fetch(this.props.server + 'signin', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     email: email,
-                    password: password
+                    password: this.hash(password)
                 })
             })
             .then(response => response.json())
