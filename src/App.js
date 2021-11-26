@@ -116,6 +116,7 @@ class App extends Component {
     }
 
     server = 'https://recognibox-api.herokuapp.com/';
+    // server = 'http://localhost:3000/';
 
 
     render() {
